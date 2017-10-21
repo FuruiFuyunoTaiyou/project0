@@ -7,7 +7,7 @@
 
 int main(){
   printf("LINKED LIST TESTS\n");
-  printf("------------------------------------------------------------\n");
+  printf("============================================================\n");
   printf("Testing list_len, print_node, and print_list:\n");
   song_node * nullptr = NULL;
   song_node * front = (song_node *)calloc(1, sizeof(song_node *));
@@ -132,12 +132,28 @@ int main(){
   printf("second list freed: ");
   print_list(free_list(front1));
 
-
+  printf("\nMUSIC LIBRARY TESTS\n");
+  printf("============================================================\n");
+  printf("Testing print_letter, print_library, and add_song:\n");
   song_node * table[27];
   int index = 0;
   for(; index < 27; index++){
     table[index] = NULL;
   }
+  printf("library: \n");
+  print_library(table);
+  printf("adding: eminem: berserk\n");
+  add_song(table, "berserk", "eminem");
+  printf("adding: eminem: when i'm gone\n");
+  add_song(table, "when i'm gone", "eminem");
+  printf("adding: pentakill: orb of winter\n");
+  add_song(table, "orb of winter", "pentakill");
+  printf("adding: 123: random song\n");
+  add_song(table, "random song", "123"); 
+  print_letter(table, "e");
+  print_letter(table, "[");
+  printf("library: \n");
+  print_library(table);
 
   
   
