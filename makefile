@@ -4,11 +4,11 @@ clean:
 	rm *.o
 	rm *~
 run: compile
-	test
+	./test
 compile_debug: linked_list.c list_headers.h music_lib.c lib_headers.h main.c
 	gcc -g -o test_debug linked_list.c music_lib.c main.c
 run_debug_valgrind: compile_debug
-	valgrind --leak-check=yes test_debug
+	valgrind --leak-check=yes ./test_debug
 run_debug_gdb: compile_debug
 	gdb test_debug
 linked_list.o: linked_list.c list_headers.h 
