@@ -44,8 +44,94 @@ int main(){
   print_list(front1);
   front1 = insert_ordered(front1, "hex core", "pentakill");
   print_list(front1);
-  front1 = insert_ordered(front1, "lightbringer", "pentakill");
+  front1 = insert_ordered(front1, "puraido kakumei", "honey works");
   print_list(front1);
+  printf("------------------------------------------------------------\n");
+  printf("Testing find_node:\n");
+  printf("looking for: honey works : puraido kakumei\n");
+  song_node * loc = find_node(front1, "puraido kakumei", "honey works");
+  if(loc){
+    printf("\tsong found: ");
+    print_node(loc);
+    printf("\n");
+  }else{
+    printf("\tsong was not found\n");
+  }
+  printf("looking for: pentakill : hex core\n");
+  loc = find_node(front1, "hex core", "pentakill");
+  if(loc){
+    printf("\tsong found: ");
+    print_node(loc);
+    printf("\n");
+  }else{
+    printf("\tsong was not found\n");
+  }
+  printf("looking for: eminem : when i'm gone\n");
+  loc = find_node(front1, "when i'm gone", "eminem");
+  if(loc){
+    printf("\tsong found: ");
+    print_node(loc);
+    printf("\n");
+  }else{
+    printf("\tsong was not found\n");
+  }
+  printf("------------------------------------------------------------\n");
+  printf("Testing first_song:\n");
+  printf("looking for: nobuo uematsu\n");
+  loc = first_song(front1, "nobuo uematsu");
+  if(loc){
+    printf("\tsong found: ");
+    print_node(loc);
+    printf("\n");
+  }else{
+    printf("\tsong was not found\n");
+  }
+  printf("looking for: pentakill\n");
+  loc = first_song(front1, "pentakill");
+  if(loc){
+    printf("\tsong found: ");
+    print_node(loc);
+    printf("\n");
+  }else{
+    printf("\tsong was not found\n");
+  }
+  printf("looking for: eminem\n");
+  loc = first_song(front1, "eminem");
+  if(loc){
+    printf("\tsong found: ");
+    print_node(loc);
+    printf("\n");
+  }else{
+    printf("\tsong was not found\n");
+  }
+  printf("------------------------------------------------------------\n");
+  printf("Testing rand_node:\n");
+  int i0 = 0;
+  for(; i0 < 10; i0++){
+    print_node(rand_node(front1));
+    //strange...in gdb when running, will print the same thing 10x
+    //when setting a breakpoint at 111, will print different things
+    printf("\n");
+  }
+  //------------just randomizing the first time???------------
+  printf("------------------------------------------------------------\n");
+  printf("Testing rm_node:\n");
+  printf("removing: honey works : puraido kakumei\n");
+  front1 = rm_node(front1, "puraido kakumei", "honey works");
+  print_list(front1);
+  printf("removing: pentakill : hex core\n");
+  front1 = rm_node(front1, "hex core", "pentakill");
+  print_list(front1);
+  printf("removing: eminem : when i'm gone\n");
+  front1 = rm_node(front1, "when i'm gone", "eminem");
+  print_list(front1);
+  printf("------------------------------------------------------------\n");
+  printf("Testing free_list:\n");
+  printf("first list freed: ");
+  print_list(free_list(front));
+  printf("second list freed: ");
+  print_list(free_list(front1));
+
 
   song_node * table[27];
   int index = 0;

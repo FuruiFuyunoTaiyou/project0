@@ -92,3 +92,72 @@ song_node * insert_ordered(song_node * front, char song_name[], char song_artist
   }
   return front;
 }
+
+song_node * find_node(song_node * current, char song_name[], char song_artist[]){
+  while(current){
+    if(strcmp(current->name, song_name) + strcmp(current->artist, song_artist) == 0){
+      return current;
+    }
+    current = current->next;
+  }
+  return NULL;
+}
+
+song_node * first_song(song_node * current, char song_artist[]){
+  while(current){
+    if(strcmp(current->artist, song_artist) == 0){
+      return current;
+    }
+    current = current->next;
+  }
+  return NULL;
+}
+
+song_node * rand_node(song_node * front){
+  srand(time(NULL));
+  int rand_index = rand() % list_len(front);
+  while(rand_index > 0){
+    rand_index--;
+    front = front->next;
+  }
+  return front;
+}
+
+song_node * find_preceding_existing(song_node * current, song_node * node){
+  if(current == node){
+    return NULL;
+  }else{
+    while(current->next){
+      if(current->next == node){
+	return current;
+      }
+      current = current->next;
+    }
+    return NULL;
+  }
+}
+
+song_node * rm_node(song_node * front, char song_name[], char song_artist[]){
+  song_node * node = find_node(front, song_name, song_artist);
+  if(node){
+    song_node * preceding = find_preceding_existing(front, node);
+    if(preceding){
+      preceding->next = node->next;
+    }else{
+      front = node->next;
+    }
+    free(node);
+  }
+  return front;
+}
+
+song_node * free_list(song_node * current){
+  song_node * next = current->next;
+  while(next){
+    free(current);
+    current = next;
+    next = current->next;
+  }
+  free(current);
+  return next;
+}
