@@ -154,8 +154,88 @@ int main(){
   print_letter(table, "[");
   printf("library: \n");
   print_library(table);
+  printf("------------------------------------------------------------\n");
+  printf("Testing find_song:\n");
+  printf("looking for: eminem : when i'm gone\n");
+  loc = find_song(table, "when i'm gone", "eminem");
+  if(loc){
+    printf("\tsong found: ");
+    print_node(loc);
+    printf("\n");
+  }else{
+    printf("\tsong was not found\n");
+  }
+  printf("looking for: 123 : random song\n");
+  loc = find_song(table, "random song", "123");
+  if(loc){
+    printf("\tsong found: ");
+    print_node(loc);
+    printf("\n");
+  }else{
+    printf("\tsong was not found\n");
+  }
+  printf("looking for: honey works : puraido kakumei\n");
+  loc = find_song(table, "puraido kakumei", "honey works");
+  if(loc){
+    printf("\tsong found: ");
+    print_node(loc);
+    printf("\n");
+  }else{
+    printf("\tsong was not found\n");
+  }
+  printf("------------------------------------------------------------\n");
+  printf("Testing find_artist:\n");
+  printf("adding: hyoo woo: where the wind sleeps\n");
+  add_song(table, "where the wind sleeps", "hyoo woo"); 
+  printf("adding: honey works: puraido kakumei\n");
+  add_song(table, "puraido kakumei", "honey works"); 
+  printf("looking for: hyoo woo\n");
+  loc = find_artist(table, "hyoo woo");
+  if(loc){
+    printf("\tartist found: ");
+    print_node(loc);
+    printf("\n");
+  }else{
+    printf("\tartist was not found\n");
+  }
+  printf("looking for: pentakill\n");
+  loc = find_artist(table, "pentakill");
+  if(loc){
+    printf("\tartist found: ");
+    print_node(loc);
+    printf("\n");
+  }else{
+    printf("\tartist was not found\n");
+  }
+  printf("looking for: ling\n");
+  loc = find_artist(table, "ling");
+  if(loc){
+    printf("\tartist found: ");
+    print_node(loc);
+    printf("\n");
+  }else{
+    printf("\tartist was not found\n");
+  }
+  printf("------------------------------------------------------------\n");
+  printf("Testing print_artist:\n");
+  printf("looking for: pentakill\n");
+  print_artist(table, "pentakill");
+  printf("looking for: eminem\n");
+  print_artist(table, "eminem");
+  printf("looking for: ling\n");
+  print_artist(table, "ling");
 
-  
+  /*
+  printf("------------------------------------------------------------\n");
+  printf("Testing shuffle:\n");
+  printf("shuffling: \n");
+  shuffle(table, 5);
+  //printf("shuffling: \n");
+  //shuffle(table, 5);
+  //printf("shuffling: \n");
+  //shuffle(table, 5);
+  */
+
   
   //remember to free everything
 

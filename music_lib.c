@@ -39,26 +39,38 @@ void add_song(song_node * table[], char song_name[], char artist_name[]){
   song_node * front = table[correct_index];
   table[correct_index] = insert_ordered(front, song_name, artist_name);
 }
-//untested
+
 song_node * find_song(song_node * table[], char song_name[], char artist_name[]){
   int correct_index = find_index(artist_name);
   song_node * front = table[correct_index];
   return find_node(front, song_name, artist_name);
 }
-//untested
+
 song_node * find_artist(song_node * table[], char artist_name[]){
   int correct_index = find_index(artist_name);
   song_node * front = table[correct_index];
   return first_song(front, artist_name);
 }
-//untested
-//void print_artist(song_node * table[], char artist_name[]){
+
+void print_artist(song_node * table[], char artist_name[]){
+  printf("%s: [\n", artist_name);
+  song_node * first = find_artist(table, artist_name);
+  while(first){
+    printf("\t");
+    print_node(first);
+    printf("\n");
+    first = first_song(first->next, artist_name);
+  }
+  printf("] \n");
+}
 //untested
 void shuffle(song_node * table[], int amt){
+  srand(time(NULL));
+  int rand_index;
+  song_node * node;
   for(; amt > 0; amt--){
-    srand(time(NULL));
-    int rand_index = rand() % 27;
-    song_node * node = rand_node(table[rand_index]);
+    rand_index = rand() % 27;
+    node = rand_node(table[rand_index]);
     print_node(node);
     printf("\n");
   }
