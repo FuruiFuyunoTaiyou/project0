@@ -75,7 +75,7 @@ void shuffle(song_node * table[], int amt){
     printf("\n");
   }
 }
-//untested
+
 void delete_song(song_node * table[], char song_name[], char artist_name[]){
   int correct_index = find_index(artist_name);
   song_node * front = table[correct_index];

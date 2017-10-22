@@ -152,12 +152,16 @@ song_node * rm_node(song_node * front, char song_name[], char song_artist[]){
 }
 
 song_node * free_list(song_node * current){
-  song_node * next = current->next;
-  while(next){
+  if(current){
+    song_node * next = current->next;
+    while(next){
+      free(current);
+      current = next;
+      next = current->next;
+    }
     free(current);
-    current = next;
-    next = current->next;
+    return next;
+  }else{
+    return current;
   }
-  free(current);
-  return next;
 }

@@ -224,7 +224,6 @@ int main(){
   print_artist(table, "eminem");
   printf("looking for: ling\n");
   print_artist(table, "ling");
-
   /*
   printf("------------------------------------------------------------\n");
   printf("Testing shuffle:\n");
@@ -235,7 +234,23 @@ int main(){
   //printf("shuffling: \n");
   //shuffle(table, 5);
   */
-
+  printf("------------------------------------------------------------\n");
+  printf("Testing delete_song:\n");
+  printf("deleting: 123 : random song \n");
+  delete_song(table, "random song", "123");
+  print_letter(table, "{");
+  printf("deleting: eminem : when i'm gone \n");
+  delete_song(table, "when i'm gone", "eminem");
+  print_letter(table, "e");
+  printf("deleting: artist that didn't exist : song that didn't exist \n");
+  delete_song(table, "song that didn't exist", "artist that didn't exist");
+  print_letter(table, "a");
+  printf("------------------------------------------------------------\n");
+  printf("Testing delete_all:\n");
+  printf("deleting all: \n");
+  delete_all(table);
+  printf("library: \n");
+  print_library(table);
   
   //remember to free everything
 
