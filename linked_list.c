@@ -114,9 +114,8 @@ song_node * first_song(song_node * current, char song_artist[]){
 }
 
 song_node * rand_node(song_node * front){
-  srand(time(NULL));
   int rand_index = rand() % list_len(front);
-  while(rand_index > 0){
+  while(rand_index){
     rand_index--;
     front = front->next;
   }

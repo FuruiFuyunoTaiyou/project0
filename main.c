@@ -6,6 +6,7 @@
 #include "lib_headers.h"
 
 int main(){
+  srand(time(NULL));
   printf("LINKED LIST TESTS\n");
   printf("============================================================\n");
   printf("Testing list_len, print_node, and print_list:\n");
@@ -113,7 +114,8 @@ int main(){
     //when setting a breakpoint at 111, will print different things
     printf("\n");
   }
-  //------------just randomizing the first time???------------
+  //---------------just randomizing the first time???---------------------
+  //(b/c srand should have been called ONCE, at the beginning of the program (main)
   printf("------------------------------------------------------------\n");
   printf("Testing rm_node:\n");
   printf("removing: honey works : puraido kakumei\n");
@@ -128,7 +130,8 @@ int main(){
   printf("------------------------------------------------------------\n");
   printf("Testing free_list:\n");
   printf("first list freed: ");
-  print_list(free_list(front));
+  front = free_list(front);
+  print_list(front);
   printf("second list freed: ");
   print_list(free_list(front1));
 
@@ -185,9 +188,9 @@ int main(){
   }
   printf("------------------------------------------------------------\n");
   printf("Testing find_artist:\n");
-  printf("adding: hyoo woo: where the wind sleeps\n");
+  printf("adding: hyoo woo : where the wind sleeps\n");
   add_song(table, "where the wind sleeps", "hyoo woo"); 
-  printf("adding: honey works: puraido kakumei\n");
+  printf("adding: honey works : puraido kakumei\n");
   add_song(table, "puraido kakumei", "honey works"); 
   printf("looking for: hyoo woo\n");
   loc = find_artist(table, "hyoo woo");
@@ -224,16 +227,33 @@ int main(){
   print_artist(table, "eminem");
   printf("looking for: ling\n");
   print_artist(table, "ling");
-  /*
-  printf("------------------------------------------------------------\n");
+  /*printf("------------------------------------------------------------\n");
   printf("Testing shuffle:\n");
+  printf("adding: enya : caribbean blue\n");
+  add_song(table, "caribbean blue", "enya"); 
+  printf("adding: mecano : hijo de la luna\n");
+  add_song(table, "hijo de la luna", "mecano"); 
+  printf("adding: florence and the machine : cosmic love\n");
+  add_song(table, "cosmic love", "florence and the machine"); 
+  printf("adding: hikasa youko : bungaku shoujo\n");
+  add_song(table, "bungaku shoujo", "hikasa youko"); 
+  printf("adding: chihiro onitsuka : memai\n");
+  add_song(table, "memai", "chihiro onitsuka"); 
+  printf("adding: nobuo uematsu : doga & une\n");
+  add_song(table, "doga & une", "nobuo uematsu"); 
+  printf("adding: eminem : stan\n");
+  add_song(table, "stan", "eminem"); 
+  printf("adding: sara bareilles : king of anything\n");
+  add_song(table, "king of anything", "sara bareilles"); 
+  printf("adding: nobuo uematsu : ikai no shin'en\n");
+  add_song(table, "ikai no shin'en", "nobuo uematsu"); 
   printf("shuffling: \n");
   shuffle(table, 5);
+  //this time, shuffling is resulting in seg faults
   //printf("shuffling: \n");
   //shuffle(table, 5);
   //printf("shuffling: \n");
-  //shuffle(table, 5);
-  */
+  //shuffle(table, 10);*/
   printf("------------------------------------------------------------\n");
   printf("Testing delete_song:\n");
   printf("deleting: 123 : random song \n");
@@ -252,7 +272,5 @@ int main(){
   printf("library: \n");
   print_library(table);
   
-  //remember to free everything
-
   return 0;
 }

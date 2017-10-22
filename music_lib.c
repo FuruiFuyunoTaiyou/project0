@@ -65,13 +65,17 @@ void print_artist(song_node * table[], char artist_name[]){
 }
 //untested
 void shuffle(song_node * table[], int amt){
-  srand(time(NULL));
+  //srand(time(NULL));
   int rand_index;
   song_node * node;
   for(; amt > 0; amt--){
     rand_index = rand() % 27;
+    while(list_len(table[rand_index]) == 0){ 
+      rand_index = rand() % 27;
+    }
     node = rand_node(table[rand_index]);
     print_node(node);
+    // remember some elements of table are null
     printf("\n");
   }
 }
@@ -81,7 +85,7 @@ void delete_song(song_node * table[], char song_name[], char artist_name[]){
   song_node * front = table[correct_index];
   table[correct_index] = rm_node(front, song_name, artist_name);
 }
-//untested 
+
 void delete_all(song_node * table[]){
   int i = 0;
   for(; i < 27; i++){
